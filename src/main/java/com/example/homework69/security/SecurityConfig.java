@@ -14,17 +14,19 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+
+import javax.sql.DataSource;
 
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private CustomUserDetailsService userDetailsService;
+    private final DataSource dataSource;
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
+    @Autowired
+    public SecurityConfig(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
     @Bean
@@ -33,22 +35,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.jdbcAuthentication()
+                .dataSource(dataSource)
+                .usersByUsernameQuery("SELECT username, password, enabled FROM users WHERE username = ?")
+                .passwordEncoder(passwordEncoder());
+    }
+
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.csrf()
+                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                .and().authorizeRequests()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/reg").permitAll()
-                .antMatchers("/posts/all").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin()
-                .defaultSuccessUrl("/fyp/" + SecurityConfig.getCurrentUserEmail(), true)
-                .successHandler(new SimpleUrlAuthenticationSuccessHandler("/fyp/" + SecurityConfig.getCurrentUserEmail()))
+                .defaultSuccessUrl("/product/all" + SecurityConfig.getCurrentUserEmail(), true)
+                .successHandler(new SimpleUrlAuthenticationSuccessHandler("/product/all" + SecurityConfig.getCurrentUserEmail()))
                 .and()
                 .logout()
                 .logoutUrl("/logout")
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .deleteCookies("JSESSIONID")
-                .and().userDetailsService(userDetailsService)
+                .and()
                 .httpBasic().disable()
                 .csrf().disable();
     }
@@ -64,3 +75,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return userDetails.getEmail();
     }
 }
+

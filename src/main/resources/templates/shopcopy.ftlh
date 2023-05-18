@@ -8,8 +8,10 @@
 <body>
 <div class="container">
     <div id="main">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <div id="left-column">
             <form id="list-form">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <label for="list1"></label>
                 <div id="dropdown1">
                     <button id="drop-btn1" class="btn-dropdown">Процессоры</button>

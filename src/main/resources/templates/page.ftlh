@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="../main.css">
+    <script src="../script.js"></script>
 </head>
 <body>
 <div class="container">
@@ -95,6 +96,8 @@
                         <a href="#">Chieftec</a>
                     </div>
                 </div>
+                <!-- CSRF Token -->
+                <input type="hidden" name="_token" value="YOUR_CSRF_TOKEN_HERE">
             </form>
         </div>
         <div id="content">
@@ -113,6 +116,7 @@
         <div id="right-column">
             <div class="search-right-col">
                 <form id="search-form-page">
+                    <input type="hidden" name="_token" value="YOUR_CSRF_TOKEN_HERE">
                     <label>
                         <input name="s" placeholder="Поиск" type="search" id="search-input">
                         <input name="h" value="0" hidden id="search-input-hidden">
@@ -124,6 +128,8 @@
                 <button class="dropbtn">Расширенный поиск</button>
                 <div class="dropdown-content">
                     <form id="search-form-hidden">
+                        <!-- CSRF Token -->
+                        <input type="hidden" name="_token" value="YOUR_CSRF_TOKEN_HERE">
                         <label>
                             <p>Поиск по бренду</p>
                             <input name="s" placeholder="Поиск по бренду" type="search" id="search-input-hidden">
@@ -153,6 +159,5 @@
         </div>
     </div>
 </div>
-<script src="../script.js"></script>
 </body>
 </html>
