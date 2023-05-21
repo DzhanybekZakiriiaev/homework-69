@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -17,7 +18,9 @@ public class ProductService {
     public List<Product> getAllProducts() {
         return productRepository.findAllProducts();
     }
-
+    public Optional<Product> findById(Long id) {
+        return productRepository.findById(id);
+    }
     public Page<Product> findByName(String name, Pageable pageable) {
         return productRepository.findByNameContainingIgnoreCase(name, pageable);
     }

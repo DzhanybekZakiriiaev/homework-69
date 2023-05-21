@@ -7,6 +7,7 @@ import com.example.homework69.repository.CartRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +18,15 @@ public class CartService {
 
     public Cart getCartByUser(User user) {
         return cartRepository.getCartByUser(user);
+    }
+
+    public Cart getOrCreateCart(HttpSession session) {
+        Cart cart = (Cart) session.getAttribute("cart");
+        if (cart == null) {
+            cart = new Cart();
+            session.setAttribute("cart", cart);
+        }
+        return cart;
     }
 
     public Cart createCart(User user) {
