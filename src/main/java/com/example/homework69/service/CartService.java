@@ -16,10 +16,6 @@ import java.util.Optional;
 public class CartService {
     private final CartRepository cartRepository;
 
-    public Cart getCartByUser(User user) {
-        return cartRepository.getCartByUser(user);
-    }
-
     public Cart getOrCreateCart(HttpSession session) {
         Cart cart = (Cart) session.getAttribute("cart");
         if (cart == null) {
@@ -29,48 +25,9 @@ public class CartService {
         return cart;
     }
 
-    public Cart createCart(User user) {
-        Cart cart = new Cart();
-        cart.setUser(user);
-        return cartRepository.save(cart);
-    }
-
     public void addToCart(Cart cart, Product product) {
         cart.getProducts().add(product);
         cartRepository.save(cart);
-    }
-
-    public void removeFromCart(Cart cart, Integer productId) {
-        cart.getProducts().removeIf(product -> product.getId().equals(productId));
-        cartRepository.save(cart);
-    }
-
-    public List<Cart> getAllCarts() {
-        return cartRepository.findAll();
-    }
-
-    public Optional<Cart> getCartById(Long id) {
-        return cartRepository.findById(id);
-    }
-
-    public Cart saveCart(Cart cart) {
-        return cartRepository.save(cart);
-    }
-
-    public void deleteCart(Cart cart) {
-        cartRepository.delete(cart);
-    }
-
-    public boolean existsCartByUser(User user) {
-        return cartRepository.existsByUser(user);
-    }
-
-    public List<Cart> getAllCartsByUser(User user) {
-        return cartRepository.findAllByUser(user);
-    }
-
-    public long countCarts() {
-        return cartRepository.count();
     }
 
     public void removeFromCart(Cart cart, Long productId) {
