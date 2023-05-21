@@ -15,4 +15,6 @@ public class OrderService {
     public List<Order> getOrdersByIdUser(Integer id) {
         return orderRepository.getOrdersByIdUser(id);
     }
+
+    public Order save(Order order){return orderRepository.save(order);}
 }
