@@ -18,7 +18,7 @@
     <#list cart.products as product>
         <div class="col-md-4">
             <div class="card product-card">
-                <img src="${product.image}" class="card-img-top" alt="Product Image">
+                <img src="../images/${product.image}" class="card-img-top" alt="Product Image">
                 <div class="card-body">
                     <h5 class="card-title">${product.name}</h5>
                     <p class="card-text">${product.description}</p>
