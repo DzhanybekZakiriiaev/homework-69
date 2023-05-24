@@ -28,4 +28,5 @@ public class User {
     @OrderBy("descriptionTime ASC")
     private List<Reviews> reviews;
     private String password;
+    private String token;
 }
