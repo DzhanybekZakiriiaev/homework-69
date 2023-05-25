@@ -15,4 +15,8 @@ public class ReviewService {
     public List<Reviews> getReviewsById(Integer id) {
         return reviewRepository.findReviewsByProductId(id);
     }
+
+    public Reviews save(Reviews reviews){
+        return reviewRepository.save(reviews);
+    }
 }

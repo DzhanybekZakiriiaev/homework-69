@@ -2,6 +2,7 @@ package com.example.homework69.controller;
 
 import com.example.homework69.dto.ProductDto;
 import com.example.homework69.dto.ReviewDto;
+import com.example.homework69.entity.Reviews;
 import com.example.homework69.mapper.ProductMapper;
 import com.example.homework69.mapper.ReviewMapper;
 import com.example.homework69.service.ProductService;
@@ -38,6 +39,11 @@ public class ProductController {
                 .stream()
                 .map(reviewMapper::fromReview)
                 .collect(Collectors.toList());
+    }
+
+    @PostMapping("/review")
+    public Reviews leaveComment(@RequestParam Reviews review){
+        return reviewService.save(review);
     }
 
     @GetMapping("search")
