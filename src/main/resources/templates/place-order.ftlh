@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+<#import "/spring.ftl" as spring>
 <head>
-    <title>${title}</title>
+    <title><@spring.message "title"/></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <style>
         body {
@@ -13,16 +14,16 @@
     </style>
 </head>
 <body>
-<h1 class="text-center">${title}</h1>
+<h1 class="text-center"><@spring.message "title"/></h1>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form action="/cart/place-order" method="POST">
                 <div class="mb-3">
-                    <label for="delivery">${delivery}</label>
+                    <label for="delivery"><@spring.message "delivery"/></label>
                     <input type="text" id="delivery" name="delivery" class="form-control" required>
                 </div>
-                <button type="submit" class="btn btn-primary">${place_order}</button>
+                <button type="submit" class="btn btn-primary"><@spring.message "place_order"/></button>
             </form>
         </div>
     </div>

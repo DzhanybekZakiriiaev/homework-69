@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
+<#import "/spring.ftl" as spring>
 <head>
     <meta charset="UTF-8">
-    <title>${title}</title>
+    <title><@spring.message "title"/></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-pzjw8f+uaB9LWPEO/QYzWbqQDV5yOiG6H9JwvqwTpX2u/i+FhB6ab8foHkLxg5g9"
           crossorigin="anonymous">
@@ -13,7 +14,6 @@
             justify-content: center;
             height: 100vh;
         }
-
         .token-container {
             text-align: center;
         }
@@ -23,27 +23,27 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <h2 class="text-center mb-4">${title}</h2>
+            <h2 class="text-center mb-4"><@spring.message "title"/></h2>
             <div class="token-container">
-                <h4>${reset_token}</h4>
+                <h4><@spring.message "reset_token"/></h4>
                 <p class="text-primary">${hashedToken}</p>
             </div>
             <form action="/password-reset" method="POST">
                 <input type="hidden" name="_csrf" value="${_csrf.token}">
                 <input type="hidden" name="email" value="${email}">
                 <div class="form-group">
-                    <label for="token">${token}</label>
+                    <label for="token"><@spring.message "token"/></label>
                     <input type="text" id="token" name="token" class="form-control" value="${hashedToken}" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="password">${new_password}</label>
+                    <label for="password"><@spring.message "new_password"/></label>
                     <input type="password" id="password" name="password" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label for="confirmPassword">${confirm_password}</label>
+                    <label for="confirmPassword"><@spring.message "confirm_password"/></label>
                     <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" required>
                 </div>
-                <button type="submit" class="btn btn-primary">${reset_password}</button>
+                <button type="submit" class="btn btn-primary"><@spring.message "reset_password"/></button>
             </form>
         </div>
     </div>
