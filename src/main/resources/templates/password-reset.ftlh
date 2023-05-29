@@ -26,13 +26,14 @@
             <@spring.message "language"/>:
         </label>
         <select name="lang" id="lang_select">
-            <option value="en-US">English</option>
-            <option value="гu-RU">Russian</option>
+            <option value="en">English</option>
+            <option value="ru">Russian</option>
         </select>
         <button type="submit">
             <@spring.message "choose" />
         </button>
     </form>
+
     <div class="row">
         <div class="col-md-6 offset-md-3">
             <h2 class="text-center mb-4"><@spring.message "title"/></h2>

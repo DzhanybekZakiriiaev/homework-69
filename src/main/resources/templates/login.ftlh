@@ -13,13 +13,14 @@
             <@spring.message "language"/>:
         </label>
         <select name="lang" id="lang_select">
-            <option value="en-US">English</option>
-            <option value="гu-RU">Russian</option>
+            <option value="en">English</option>
+            <option value="ru">Russian</option>
         </select>
         <button type="submit">
             <@spring.message "choose" />
         </button>
     </form>
+
     <h1><@spring.message "titleLogin"/></h1>
     <form method="POST" action="/login">
         <input type="hidden" name="_csrf" value="${csrfToken}">

@@ -6,6 +6,7 @@ import com.example.homework69.service.CategoryService;
 
 import com.example.homework69.service.ProductService;
 import lombok.AllArgsConstructor;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -57,20 +58,22 @@ public class WebController {
 
         List<Category> categories = categoryService.getAllCategory();
         model.addAttribute("categories", categories);
-        model.addAttribute("messages", ResourceBundle.getBundle("messages_en"));
+        model.addAttribute("messages", ResourceBundle.getBundle("messages", LocaleContextHolder.getLocale()));
         return "products";
     }
 
 
     @GetMapping("products")
     public String getProductWithName(Model model) {
-        model.addAttribute("messages", ResourceBundle.getBundle("messages_en"));
+        model.addAttribute("messages", ResourceBundle.getBundle("messages", LocaleContextHolder.getLocale()));
+
         return "page";
     }
 
     @GetMapping()
     public String mainPage(Model model) {
-        model.addAttribute("messages", ResourceBundle.getBundle("messages_en"));
+        model.addAttribute("messages", ResourceBundle.getBundle("messages", LocaleContextHolder.getLocale()));
+
         return "shopcopy";
     }
 }
