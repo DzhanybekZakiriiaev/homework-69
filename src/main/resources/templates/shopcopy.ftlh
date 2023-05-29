@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="${lang}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>${messages.title}</title>
     <link rel="stylesheet" type="text/css" href="../main.css">
 </head>
 <body>
 <div class="container">
     <div id="main">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="csrf-token" content="{{csrf_token()}}">
         <div id="left-column">
             <form id="list-form">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <label for="list1"></label>
                 <div id="dropdown1">
-                    <button id="drop-btn1" class="btn-dropdown">Процессоры</button>
+                    <button id="drop-btn1" class="btn-dropdown">${messages.processors}</button>
                     <div id="list1">
                         <a href="#">Intel</a>
                         <a href="#">AMD</a>
@@ -23,7 +23,7 @@
                 <br>
                 <label for="list2"></label>
                 <div id="dropdown2">
-                    <button id="drop-btn2" class="btn-dropdown">Материнские платы</button>
+                    <button id="drop-btn2" class="btn-dropdown">${messages.motherboard}</button>
                     <div id="list2">
                         <a href="#">Gigabyte</a>
                         <a href="#">Asus</a>
@@ -35,7 +35,7 @@
                 <br>
                 <label for="list3"></label>
                 <div id="dropdown3">
-                    <button id="drop-btn3" class="btn-dropdown">Системы охлождения</button>
+                    <button id="drop-btn3" class="btn-dropdown">${messages.cooling_systems}</button>
                     <div id="list3">
                         <a href="#">DEEPCOOL</a>
                         <a href="#">Asus</a>
@@ -45,7 +45,7 @@
                 <br>
                 <label for="list4"></label>
                 <div id="dropdown4">
-                    <button id="drop-btn4" class="btn-dropdown">Оперативная память</button>
+                    <button id="drop-btn4" class="btn-dropdown">${messages.ram}</button>
                     <div id="list4">
                         <a href="#">Kingston</a>
                         <a href="#">Gigabyte</a>
@@ -56,7 +56,7 @@
                 <br>
                 <label for="list5"></label>
                 <div id="dropdown5">
-                    <button id="drop-btn5" class="btn-dropdown">Видеокарты</button>
+                    <button id="drop-btn5" class="btn-dropdown">${messages.video_cards}</button>
                     <div id="list5">
                         <a href="#">Asus</a>
                         <a href="#">Gigabyte</a>
@@ -67,7 +67,7 @@
                 <br>
                 <label for="list6"></label>
                 <div id="dropdown6">
-                    <button id="drop-btn6" class="btn-dropdown">Жесткие диски</button>
+                    <button id="drop-btn6" class="btn-dropdown">${messages.hard_drives}</button>
                     <div id="list6">
                         <a href="#">Toshiba</a>
                         <a href="#">WD</a>
@@ -78,7 +78,7 @@
                 <br>
                 <label for="list7"></label>
                 <div id="dropdown7">
-                    <button id="drop-btn7" class="btn-dropdown">Блоки питания</button>
+                    <button id="drop-btn7" class="btn-dropdown">${messages.power_supplies}</button>
                     <div id="list7">
                         <a href="#">Vinga</a>
                         <a href="#">AeroCool</a>
@@ -89,7 +89,7 @@
                 <br>
                 <label for="list8"></label>
                 <div id="dropdown8">
-                    <button id="drop-btn8" class="btn-dropdown">Корпус</button>
+                    <button id="drop-btn8" class="btn-dropdown">${messages.cases}</button>
                     <div id="list8">
                         <a href="#">Zalman</a>
                         <a href="#">Corsair</a>
@@ -101,41 +101,41 @@
         </div>
         <div id="content">
             <div class="switch-start-brand" style="display: none">
-                <button id="prev" type="button" style="display: flex">Предыдущая страница</button>
-                <button id="next" type="button" style="display: flex">Следующая страница</button>
+                <button id="prev" type="button" style="display: flex">${messages.previous_page}</button>
+                <button id="next" type="button" style="display: flex">${messages.next_page}</button>
             </div>
             <div class="card-col">
                 <div class="cards">
                     <img src="../images/video-card.jpg" alt="image" class="card-image">
-                    <p class="card-name">Видеокарты</p>
+                    <p class="card-name">${messages.video_cards}</p>
                 </div>
                 <div class="cards">
                     <img src="../images/cpu.jpg" alt="image" class="card-image">
-                    <p class="card-name">Процессоры</p>
+                    <p class="card-name">${messages.processors}</p>
                 </div>
                 <div class="cards">
                     <img src="../images/cpu-cooler.jpg" alt="image" class="card-image">
-                    <p class="card-name">Системы охлаждения</p>
+                    <p class="card-name">${messages.cooling_systems}</p>
                 </div>
                 <div class="cards">
                     <img src="../images/motherboard.jpg" alt="image" class="card-image">
-                    <p class="card-name">Материнская плата</p>
+                    <p class="card-name">${messages.motherboards}</p>
                 </div>
                 <div class="cards">
                     <img src="../images/hdd.jpg" alt="image" class="card-image">
-                    <p class="card-name">Жесткие диски</p>
+                    <p class="card-name">${messages.hard_drives}</p>
                 </div>
                 <div class="cards">
                     <img src="../images/frame.jpg" alt="image" class="card-image">
-                    <p class="card-name">Корпус</p>
+                    <p class="card-name">${messages.cases}</p>
                 </div>
                 <div class="cards">
                     <img src="../images/ram.jpg" alt="image" class="card-image">
-                    <p class="card-name">Оперативная память</p>
+                    <p class="card-name">${messages.ram}</p>
                 </div>
                 <div class="cards">
                     <img src="../images/power-unit.jpg" alt="image" class="card-image">
-                    <p class="card-name">Блоки питания</p>
+                    <p class="card-name">${messages.power_supplies}</p>
                 </div>
             </div>
             <div id="content-products">
@@ -146,40 +146,40 @@
             <div class="search-right-col">
                 <form id="search-form">
                     <label>
-                        <input name="s" placeholder="Поиск" type="search" id="search-input">
+                        <input name="s" placeholder="${messages.search}" type="search" id="search-input">
                         <input name="h" value="0" hidden id="search-input-hidden">
                     </label>
-                    <button type="submit" id="search-button">Поиск</button>
+                    <button type="submit" id="search-button">${messages.search}</button>
                 </form>
             </div>
             <div class="dropdown">
-                <button class="dropbtn">Расширенный поиск</button>
+                <button class="dropbtn">${messages.advanced_search}</button>
                 <div class="dropdown-content">
                     <form id="search-form-hidden">
                         <label>
-                            <input name="s" placeholder="Поиск по бренду" type="search" id="search-input-hidden">
+                            <input name="s" placeholder="${messages.search_by_brand}" type="search" id="search-input-hidden">
                             <input name="h" value="0" hidden id="hidden-search-input">
-                            <p>Поиск по описанию</p>
-                            <input name="d" placeholder="Поиск по описанию" type="search" id="search-input-description">
-                            <p>Диапазон цен</p>
-                            <input name="min" placeholder="Минимальная цена" type="search" id="min-search-input">
-                            <input name="max" placeholder="Максимальная цена" type="search" id="max-search-input">
+                            <p>${messages.search_by_description}</p>
+                            <input name="d" placeholder="${messages.search_by_description}" type="search" id="search-input-description">
+                            <p>${messages.price_range}</p>
+                            <input name="min" placeholder="${messages.min_price}" type="search" id="min-search-input">
+                            <input name="max" placeholder="${messages.max_price}" type="search" id="max-search-input">
                         </label>
-                        <button type="submit" id="search-button-brand">Поиск</button>
+                        <button type="submit" id="search-button-brand">${messages.search}</button>
                     </form>
                 </div>
             </div>
             <div class="orders">
-                <h3 id="orders-title">Ваша корзина</h3>
+                <h3 id="orders-title">${messages.your_cart}</h3>
                 <div id="orders-list">
                     <ol id="orders-ol">
-                        <li id="clear-li-text">Корзина пуста</li>
+                        <li id="clear-li-text">${messages.cart_empty}</li>
                     </ol>
                 </div>
                 <a href="#">
-                    <button type="button" id="orders-button">Перейти в корзину</button>
+                    <button type="button" id="orders-button">${messages.go_to_cart}</button>
                 </a>
-                <button type="button" id="orders-button-clear">Очистить корзину</button>
+                <button type="button" id="orders-button-clear">${messages.clear_cart}</button>
             </div>
         </div>
     </div>

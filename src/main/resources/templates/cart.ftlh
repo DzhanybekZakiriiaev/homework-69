@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Cart</title>
+    <title>${titleCart}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <style>
         body {
@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-<h1 class="text-center">Cart</h1>
+<h1 class="text-center">${titleCart}</h1>
 <div class="row">
     <#list cart.products as product>
         <div class="col-md-4">
@@ -26,7 +26,7 @@
                     <form action="/cart/remove" method="POST">
                         <input type="hidden" name="_csrf" value="${csrfToken}">
                         <input type="hidden" name="productId" value="${product.id}">
-                        <button type="submit" class="btn btn-danger">Remove from Cart</button>
+                        <button type="submit" class="btn btn-danger">${removeFromCart}</button>
                     </form>
                 </div>
             </div>
@@ -36,5 +36,3 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-

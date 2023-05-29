@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Password Reset</title>
+    <title>${title}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-pzjw8f+uaB9LWPEO/QYzWbqQDV5yOiG6H9JwvqwTpX2u/i+FhB6ab8foHkLxg5g9"
           crossorigin="anonymous">
@@ -23,27 +23,27 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <h2 class="text-center mb-4">Password Reset</h2>
+            <h2 class="text-center mb-4">${title}</h2>
             <div class="token-container">
-                <h4>Your Reset Token:</h4>
+                <h4>${reset_token}</h4>
                 <p class="text-primary">${hashedToken}</p>
             </div>
             <form action="/password-reset" method="POST">
                 <input type="hidden" name="_csrf" value="${_csrf.token}">
                 <input type="hidden" name="email" value="${email}">
                 <div class="form-group">
-                    <label for="token">Token</label>
+                    <label for="token">${token}</label>
                     <input type="text" id="token" name="token" class="form-control" value="${hashedToken}" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="password">New Password</label>
+                    <label for="password">${new_password}</label>
                     <input type="password" id="password" name="password" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <label for="confirmPassword">Confirm Password</label>
+                    <label for="confirmPassword">${confirm_password}</label>
                     <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Reset Password</button>
+                <button type="submit" class="btn btn-primary">${reset_password}</button>
             </form>
         </div>
     </div>

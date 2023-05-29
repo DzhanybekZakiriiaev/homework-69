@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Logout</title>
+    <title>${titleLogout}</title>
     <link rel="stylesheet" type="text/css" href="../main.css">
 </head>
 <body>
 <div class="container">
-    <h1>Logout</h1>
+    <h1>${titleLogout}</h1>
     <form method="POST" action="/logout">
         <input type="hidden" name="_csrf" value="${csrfToken}">
-        <p>Are you sure you want to logout?</p>
-        <button type="submit">Logout</button>
+        <p>${confirmation}</p>
+        <button type="submit">${logout}</button>
     </form>
 </div>
 </body>
