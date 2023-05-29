@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.ResourceBundle;
 
 @Controller
 @AllArgsConstructor
@@ -56,16 +57,20 @@ public class WebController {
 
         List<Category> categories = categoryService.getAllCategory();
         model.addAttribute("categories", categories);
+        model.addAttribute("messages", ResourceBundle.getBundle("messages_en"));
         return "products";
     }
 
+
     @GetMapping("products")
-    public String getProductWithName() {
+    public String getProductWithName(Model model) {
+        model.addAttribute("messages", ResourceBundle.getBundle("messages_en"));
         return "page";
     }
 
     @GetMapping()
-    public String mainPage() {
+    public String mainPage(Model model) {
+        model.addAttribute("messages", ResourceBundle.getBundle("messages_en"));
         return "shopcopy";
     }
 }

@@ -9,6 +9,18 @@
 </head>
 <body>
 <div class="container">
+    <form action="" method="get">
+        <label for="lang_select">
+            <@spring.message "language"/>:
+        </label>
+        <select name="lang" id="lang_select">
+            <option value="en-US">English</option>
+            <option value="гu-RU">Russian</option>
+        </select>
+        <button type="submit">
+            <@spring.message "choose" />
+        </button>
+    </form>
     <div id="main">
         <div id="left-column">
             <form id="list-form">

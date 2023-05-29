@@ -14,6 +14,18 @@
     </style>
 </head>
 <body>
+<form action="" method="get">
+    <label for="lang_select">
+        <@spring.message "language"/>:
+    </label>
+    <select name="lang" id="lang_select">
+        <option value="en-US">English</option>
+        <option value="гu-RU">Russian</option>
+    </select>
+    <button type="submit">
+        <@spring.message "choose" />
+    </button>
+</form>
 <h1 class="text-center"><@spring.message "titleCart"/></h1>
 <div class="row">
     <#list cart.products as product>
