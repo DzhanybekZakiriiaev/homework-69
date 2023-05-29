@@ -28,7 +28,7 @@ public class Order {
     private User user;
     @ManyToMany
     @JoinTable(
-            name = "order",
+            name = "orders",
             joinColumns = @JoinColumn(name = "id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )

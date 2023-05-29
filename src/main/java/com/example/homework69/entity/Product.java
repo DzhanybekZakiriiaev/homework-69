@@ -38,11 +38,11 @@ public class Product {
     @Column(name = "image_link")
     private String image;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
-    @OrderBy("delivery ASC")
+    @ManyToMany(mappedBy = "products")
     private List<Order> orders;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
     @OrderBy("descriptionTime ASC")
     private List<Reviews> reviews;
 }
+

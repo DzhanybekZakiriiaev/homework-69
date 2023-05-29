@@ -39,9 +39,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
-                .usersByUsernameQuery("SELECT username, password, enabled FROM users WHERE username = ?")
+                .usersByUsernameQuery("SELECT email, password, enabled FROM users WHERE email = ?")
+                .authoritiesByUsernameQuery("SELECT email, role FROM users WHERE email = ?")
                 .passwordEncoder(passwordEncoder());
     }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -52,8 +54,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/reg").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin()
-                .defaultSuccessUrl("/product/all" + SecurityConfig.getCurrentUserEmail(), true)
-                .successHandler(new SimpleUrlAuthenticationSuccessHandler("/product/all" + SecurityConfig.getCurrentUserEmail()))
                 .and()
                 .logout()
                 .logoutUrl("/logout")
@@ -77,4 +77,3 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return userDetails.getEmail();
     }
 }
-
